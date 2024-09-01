@@ -20,7 +20,7 @@ const Login = () => {
       }, { withCredentials: true });
 
       if (response.data.message === 'Login successful') {
-        navigate('/sidebar');  // Navigate to the sidebar page
+        navigate('/sidebar');  
       } else {
         setError('Login failed. Please check your credentials.');
       }
