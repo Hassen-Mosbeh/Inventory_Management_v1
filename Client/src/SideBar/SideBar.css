@@ -1,0 +1,33 @@
+.sidebar{
+    color: floralwhite;
+}
+.Logo
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 10px;
+}
+.Logo-icon
+{
+   width: 40px;
+   height: 40px;
+   display: flex;
+   align-items: center;
+   font-size: 1.5rem;
+   border-radius: 50%;
+   background: rgba(28, 17, 41, 0.88);
+}
+.menu-bar{
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 1rem;
+    position: relative;
+
+
+
+
+}
