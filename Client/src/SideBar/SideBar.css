@@ -1,6 +1,16 @@
-.sidebar{
+
+.sidebar {
+    background-color: #333;
     color: floralwhite;
-}
+    width: 250px; 
+    height: 100vh;
+    position: fixed; 
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
 .Logo
 {
     display: flex;
@@ -17,7 +27,7 @@
    align-items: center;
    font-size: 1.5rem;
    border-radius: 50%;
-   background: rgba(28, 17, 41, 0.88);
+   background: rgba(53, 31, 77, 0.88);
 }
 .menu-bar{
     height: 88vh;

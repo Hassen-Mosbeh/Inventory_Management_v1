@@ -2,41 +2,45 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';  // Import useNavigate
 import email_icon from '../assets/email.png';
 import password_icon from '../assets/password.png';
-import './Login.css';
 import axios from 'axios';
 
-const Login = () => {
+const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();  // Initialize useNavigate
 
-  const handleLogin = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000//Api/v1/login', {
+      const response = await axios.post('http://localhost:3000/Api/v1/Signup', {
         email,
         password,
       }, { withCredentials: true });
 
-      if (response.data.message === 'Login successful') {
+      // Adjust success message check based on your API response
+      if (response.data.message === 'Signup successful') {
         navigate('/sidebar');  // Navigate to the sidebar page
       } else {
-        setError('Login failed. Please check your credentials.');
+        setError('Signup failed. Please check your details.');
       }
     } catch (error) {
-      setError('An error occurred during login. Please try again later.');
-      console.error('Error logging in:', error.response ? error.response.data : error.message);
+      setError('An error occurred during signup. Please try again later.');
+      console.error('Error signing up:', error.response ? error.response.data : error.message);
     }    
   };
 
   return (
     <div className='container'>
       <div className="header">
-        <div className="text">Login</div>
+        <div className="text">Signup</div> {/* Changed to Signup */}
         <div className="underline"></div>
       </div>
-      <form onSubmit={handleLogin} className="inputs">
+      <form onSubmit={handleSignup} className="inputs">
+      <div className="input">
+        <input id="name"   name="name"
+            placeholder="UserName"type="name" />
+        </div>
         <div className="input">
           <img src={email_icon} alt="Email Icon" />
           <input
@@ -59,13 +63,17 @@ const Login = () => {
             required
           />
         </div>
+        <div className="input">
+        <input id="txt"   name="Role"
+            placeholder="Role"type="role" /> 
+        </div>
+
         {error && <div className="error-message">{error}</div>}
-        <div className="forgot-password">Lost Password? <span>Click Here!</span></div>
-        <button className="submit" type='submit'>Login</button>
-        
+        <button className="submit" type='submit'>Signup</button> {/* Changed text to Signup */}
+      
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Signup;
