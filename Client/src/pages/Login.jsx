@@ -20,11 +20,8 @@ const Login = () => {
       }, { withCredentials: true });
 
       if (response.data.message === 'Login successful') {
-<<<<<<< HEAD
-        navigate('/sidebar');  
-=======
-        navigate('/sidebar');  // Navigate to the sidebar page
->>>>>>> 0ff35f15e1723f871f4af958e9c4de5a51f49dde
+
+       navigate('/sidebar');  // Navigate to the sidebar page
       } else {
         setError('Login failed. Please check your credentials.');
       }
@@ -66,10 +63,6 @@ const Login = () => {
         {error && <div className="error-message">{error}</div>}
         <div className="forgot-password">Lost Password? <span>Click Here!</span></div>
         <button className="submit" type='submit'>Login</button>
-<<<<<<< HEAD
-=======
-        
->>>>>>> 0ff35f15e1723f871f4af958e9c4de5a51f49dde
       </form>
     </div>
   );
