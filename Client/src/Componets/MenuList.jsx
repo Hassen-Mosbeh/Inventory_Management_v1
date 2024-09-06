@@ -7,9 +7,15 @@ import { HomeOutlined,
     BarsOutlined} from '@ant-design/icons';
 
 
+<<<<<<< HEAD
 const MenuList = ({ darkTheme }) => {
   return (
     <Menu theme={darkTheme ? 'dark' : 'light'}  mode="inline" className='menu-bar'>
+=======
+const MenuList = () => {
+  return (
+    <Menu theme='dark' mode="inline" className='menu-bar'>
+>>>>>>> 0ff35f15e1723f871f4af958e9c4de5a51f49dde
       <Menu.Item key="Home" icon={<HomeOutlined />}>
       Home
       </Menu.Item>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Button, Layout, theme } from "antd";
 import './SideBar.css';
 import Logo from '../Componets/Logo';
@@ -35,6 +36,22 @@ function App(){
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}/>
             </Header>
           </Layout>
+=======
+import { Layout } from "antd";
+import './SideBar.css';
+import Logo from '../Componets/Logo';
+import MenuList from "../Componets/MenuList";
+
+const { Header, Sider } = Layout;
+
+function App(){
+    return(
+      <Layout>
+        <Sider className="sidebar">
+          <Logo />
+          <MenuList/>
+        </Sider>
+>>>>>>> 0ff35f15e1723f871f4af958e9c4de5a51f49dde
       </Layout>
        
     );
