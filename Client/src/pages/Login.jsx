@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import email_icon from '../assets/email.png';
 import password_icon from '../assets/password.png';
 import './Login.css';
@@ -9,26 +9,25 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();  // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000//Api/v1/login', {
+      const response = await axios.post('http://localhost:3000/Api/v1/login', {
         email,
         password,
       }, { withCredentials: true });
 
-      if (response.data.message === 'Login successful') {
-
-       navigate('/sidebar');  // Navigate to the sidebar page
+      if (response.status === 200) {
+        navigate('/sidebar');
       } else {
         setError('Login failed. Please check your credentials.');
       }
     } catch (error) {
       setError('An error occurred during login. Please try again later.');
       console.error('Error logging in:', error.response ? error.response.data : error.message);
-    }    
+    }
   };
 
   return (
@@ -41,7 +40,7 @@ const Login = () => {
         <div className="input">
           <img src={email_icon} alt="Email Icon" />
           <input
-            id="txt"
+            className="txt"
             type="email"
             placeholder="Email"
             value={email}
@@ -52,7 +51,7 @@ const Login = () => {
         <div className="input">
           <img src={password_icon} alt="Password Icon" />
           <input
-            id="txt"
+            className="txt"
             type="password"
             placeholder="Password"
             value={password}
@@ -62,7 +61,7 @@ const Login = () => {
         </div>
         {error && <div className="error-message">{error}</div>}
         <div className="forgot-password">Lost Password? <span>Click Here!</span></div>
-        <button className="submit" type='submit'>Login</button>
+        <button className="submit" type="submit">Login</button>
       </form>
     </div>
   );

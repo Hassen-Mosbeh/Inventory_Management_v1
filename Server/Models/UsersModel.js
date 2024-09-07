@@ -17,6 +17,9 @@ class UsersModel {
       );
     });
   }
+  static async comparePassword(storedPassword, inputPassword) {
+    return bcrypt.compare(inputPassword, storedPassword); // Compare hashed passwords
+  }
 
   static async getUserById(idUsers) {
     return new Promise((resolve, reject) => {
@@ -36,25 +39,17 @@ class UsersModel {
   
   static async login(email, password) {
     try {
-      const user = await UserModel.getUserByEmail(email);
-      const isPasswordMatch = await bcrypt.compare(password, user.password);
+      // Find the user by email
+      const user = await database.query('SELECT * FROM users WHERE email = ?', [email]);
 
-      if (!user) {
-        return { success: false, message: "User not found" };
-      }
-
-      if (user.tag_actif === 0) {
-        return { success: false, message: "User not activated" };
-      }
-      if (isPasswordMatch) {
-        await UserModel.updateLastActivity(user.idUsers);
-        return { success: true, user };
+      if (user && user.password === password) { // Plaintext comparison
+        return { success: true, users: user };
       } else {
-        // Passwords do not match
-        return { success: false, message: "Invalid password" };
+        return { success: false, message: 'Invalid email or password' };
       }
     } catch (error) {
-      return { success: false, message: "Internal Server Error" };
+      console.error('Error during login:', error);
+      return { success: false, message: 'Error occurred while logging in' };
     }
   }
 
